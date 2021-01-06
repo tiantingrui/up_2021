@@ -56,3 +56,4 @@ function postOrder(root) {
     postOrder(root.right)
     console.log("当前遍历的结点：", root.val)
 }
+
