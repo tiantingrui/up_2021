@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5 history Router</title>
+</head>
+<body>
+    <p>history API test</p>
+    <button id=btn1> 修改 hash </button>
+</body>
+<script>
+    // 页面初次加载，获取hash
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('load', location.pathname)
+    })
+
+    // 打开一个新的路由
+    // 注意：用 pushState方式，浏览器不会刷新页面
+    document.getElementById('btn1').addEventListener('click', () => {
+        const state = {name : 'page1'}
+        console.log('切换路由到', 'page1')
+        history.pushState(state, '', 'page1')
+    })
+
+    // 监听浏览器前进、后退
+    window.onpopstate = (event) => {
+        console.log('onpopstate', event.state, location.pathname)
+    }
+</script>
+</html>
