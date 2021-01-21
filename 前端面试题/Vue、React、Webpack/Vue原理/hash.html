@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Router</title>
+</head>
+<body>
+    <p>hash test</p>
+    <button id=btn1> 修改 hash </button>
+</body>
+
+<script>
+    // hash 变化，包括：
+    // a. JS 修改 URL
+    // b. 手动修改 url 的 hash
+    // c. 浏览器前进、后退
+    window.onhashchange = (event) => {
+        console.log('old url', event.oldURl)
+        console.log('new url', event.newURl)
+
+        consoel.log('hash: ', location.hash)
+    }
+
+    // 页面初次加载，获取 hash
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('hash: ', localtion.hash)
+    })
+
+    // JS 修改 URL
+    document.getElementById('btn1').addEventListener('click', () => {
+        location.href = '#/user'
+    })
+</script>
+</html>
