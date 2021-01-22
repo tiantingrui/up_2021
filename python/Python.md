@@ -399,4 +399,128 @@ is  == isinstance
 + if else
 + If elif else
 + for
+  + 主要用来遍历/循环  序列或者集合、字典
++ for else
+  + 循环结束完之后，执行else
 + while
+  + 使用场景：递归
++ while else
+
+
+
++ break - 强行终止当前的循环，后面也不执行
++ continue - 终止本次循环，后面接着执行
+
+
+
+
+
+js中的 for 循环
+
+```js
+for (let i = 0; i < 10; i++) {
+  
+}
+```
+
+
+
+Python中的 for循环
+
+```python
+for x in range(0, 10)
+```
+
+
+
+## 包、模块、函数与变量作用域
+
+### Python 工程的组织结构：包、模块、类
+
++ 包 - 文件夹
++ 模块 - 文件
++ 类
++ 函数、变量
+
+
+
+#### 包与模块的名字
+
++ 包 - 文件夹名字
++ 模块 - 文件名字
+
+**包下面必须要有 `__init__.py` 文件**，否则就是一个普通的文件夹
+
+
+
+命名空间
+
+a.c4
+
+b.c4
+
+
+
+##### import  - 导入模块
+
+```python  
+import t.c1
+print(t.c1.a)
+
+
+import t.c1 as m
+print(m.a)
+```
+
+
+
+##### from import - 导入变量
+
+```python
+from t.c1 import a
+print(a)
+
+from t import c1
+print(c1.a)
+
+form t.c1 import * 
+```
+
+
+
+
+
+#### `__init__` 的用法
+
++ 批量导入
+
++ 定义包的入口
+
+  
+
+#### 包和模块的几个误区：
+
++ 不能重复引入
++ 不能循环引入
+
+
+
+### 模块内置变量
+
+> dir()
+
++ `__name__`
++ `__package__`
++ `__file__  ` 
++ `__doc__`   - 模块的注释
+
+
+
+#### 入口文件和普通内置模块内置变量的区别
+
+入口文件 `__name__` 指向 `__main__`
+
+
+
+
+
