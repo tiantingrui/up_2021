@@ -26,3 +26,25 @@ const src2 = 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=14807659
     const img2 = await loadImg(src2)
     console.log(img2.height, img2.width)
 })()
+
+
+async function f1() {
+    return 100
+}
+const res1 = f1()
+
+
+// -----
+async function async1() {
+    console.log('async1 start') // 2
+    await async2()
+    console.log('async end') // 5
+}
+
+async function async2() {
+    console.log('async2') // 3
+}
+
+console.log('script start') // 1
+async1()
+console.log('script end') // 4

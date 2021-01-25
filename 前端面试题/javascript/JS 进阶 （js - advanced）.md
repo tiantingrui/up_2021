@@ -1,4 +1,4 @@
-# JS 进阶 （js - advanced）
+# **JS** 进阶 （js - advanced）
 
 + Event loop
 + Promise 进阶
@@ -100,41 +100,131 @@ console.log('Bye')
 
 
 
+### async/await 和 promise 的关系
+
++ async/await 是消灭异步回调的终极武器
++ 但和 promise 并不互斥
++ 反而，两者**相辅相成**
+
+
+
++ 执行async函数，返回的是一个**Promise对象**
++ await相当于Promise的**then**
+  + 注意这里**不会接收 rejected**
+  + 要做好 try catch
++ try……catch 可捕获异常，代替了Promise 的catch
 
 
 
 
 
+## 异步的本质
+
++ async/await 是消灭异步回调的终极武器
+
++ JS 还是单线程，还得是有异步，还得是基于 event loop
++ async/await 只是一个语法糖，很香！
+
+```js
+async function async1() {
+    console.log('async1 start') // 2
+    await async2()
+    console.log('async end') // 5
+}
+
+async function async2() {
+    console.log('async2') // 3
+}
+
+console.log('script start') // 1
+async1()
+console.log('script end') // 4
+```
+
+
+
+### for of
+
++ for in 以及（forEach  for ) 是常规的同步遍历
++ for of 常用于异步的遍历
+
+
+
+### 总结 async / await 总结
+
++ async/await 解决了异步回调，是一个很香的语法糖
++ async/await 和 Promise 的关系，重要
++ for ... of 的使用
 
 
 
 
 
+## 宏任务和微任务
+
++ 什么是宏任务和微任务
++ event loop 和 DOM 渲染
++ 宏任务和微任务的区别
+
+
+
+### 宏任务和微任务
+
++ Macro task: setTimeout、setInterval、ajax、DOM事件
++ Micro task：Promise async/await
++ 微任务执行时机要比宏任务执行时机早
 
 
 
 
 
+### event loop 和 DOM 渲染
+
++ JS 是单线层的。而且和DOM渲染共用一个线程
++ JS执行的时候，得留一些时机供DOM渲染
+
+
+
+![image-20210125153018960](/Users/terry/typero-image/image-20210125153018960.png)
+
+
+
+1. 每次Call Stack 清空（即每次轮询结束），即同步任务执行完
+2. 都是DOM重新渲染的机会，DOM结构如有改变则重新渲染
+3. 然后再去触发下一次Eventloop
 
 
 
 
 
+### 宏任务和微任务的区别
+
++ 宏任务：DOM渲染后触发，如setTimeout
++ 微任务：DOM渲染前触发，如Promise
 
 
 
+### 从event loop 解释，为何微任务执行更早
+
++ 微任务是ES6语法规定的， 微任务不会走 web api
++ 宏任务是由浏览器规定的
+
+![image-20210125161510224](/Users/terry/typero-image/image-20210125161510224.png)
+
+Event loop执行顺序
+
+1. Call stack 清空
+2. 执行当前的微任务 - micro task queue
+3. 尝试DOM渲染
+4. 触发 Event Loop(轮询查找callback Queue，如有则移动到Call Stack 执行)
 
 
 
+### 总结 - 宏任务和微任务
 
-
-
-
-
-
-
-
-
++ 宏任务和微任务有哪些？微任务触发时机更早
++ 微任务、宏任务和DOM渲染的关系
++ 微任务、宏任务和DOM渲染，在event loop 的过程
 
 
 
@@ -145,6 +235,8 @@ console.log('Bye')
 + 请描述 event loop(事件循环/事件轮询)的机制，可画图
 
 + 什么是微任务/宏任务，两者有什么区别？
+
+  + 微任务（DOM渲染之前）执行时机比宏任务（DOM渲染之后）要早
 
 + promise有哪三种状态，如何变化
 
@@ -184,20 +276,20 @@ console.log('Bye')
     return 100
   }
   (async function() {
-    const a = fn() // ??
-    const b = await fn() // ??
+    const a = fn() // ?? Promise
+    const b = await fn() // ?? 100
   }
   )()
   
   
   // 第二题
   (async function(
-  	console.log('start')
+  	console.log('start') // 1
     const a = await 100
-    console.log('a', a)
+    console.log('a', a) // 100
     const b = await Promise.reslove(200)
-    console.log('b', b)
-    const c = await Promise.reject(300)
+    console.log('b', b) // 200
+    const c = await Promise.reject(300) // 会报错 ，await相当于 then, 后面不会打印，用try catch 处理
     console.log('c', c)
     console.log('end')
   ) {})() // 打印出哪些内容？
@@ -235,6 +327,7 @@ console.log('Bye')
   
   async1()
   
+  // 初始化 promise 时，传入的函数会立刻被执行
   new Promise(function (resolve) {
     console.log('promise1')
     resolve()
@@ -243,11 +336,9 @@ console.log('Bye')
   })
   
   console.log('script end')
-  ```
-
+```
   
-
-
+  
 
 
 
