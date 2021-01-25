@@ -185,7 +185,7 @@ console.log('script end') // 4
 
 
 
-![image-20210125153018960](/Users/terry/typero-image/image-20210125153018960.png)
+![image-20210125153018960](./img/image-20210125153018960.png)
 
 
 
@@ -209,7 +209,7 @@ console.log('script end') // 4
 + 微任务是ES6语法规定的， 微任务不会走 web api
 + 宏任务是由浏览器规定的
 
-![image-20210125161510224](/Users/terry/typero-image/image-20210125161510224.png)
+![image-20210125161510224](./img/image-20210125161510224.png)
 
 Event loop执行顺序
 
