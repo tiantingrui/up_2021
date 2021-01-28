@@ -55,3 +55,21 @@ const compare = (s) => {
     }
     return !stack.length
 }
+
+// queue - 933. 计算最近请求次数 (当前时间到 3000ms 内)
+// 有新请求就入队，3000ms前发出的请求出队
+// 队列的长度就是最近请求次数
+// 输入： inputs = [[], [1], [100], [3001], [3002]]
+// 输出：[null, 1, 2, 3, 3]
+
+const RecentCounter = function() {
+    this.q = []
+}
+
+RecentCounter.prototype.ping = function(t) {
+    this.q.push(t)
+    while(this.q[0] < t - 3000) {
+        this.q.shift()
+    }
+    return this.q.length
+}
