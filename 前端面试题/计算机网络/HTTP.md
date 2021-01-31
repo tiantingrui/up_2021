@@ -189,9 +189,9 @@ headers: {'X-Requested-with': 'XMLHttpRequest'},
 + 控制强制缓存的逻辑
 + 例如Cache-Control: max-age=31536000(单位是秒， 一年)
 
-![image-20210131160829774](/Users/terry/typero-image/image-20210131160829774.png)
+![image-20210131160829774](./img/image-20210131160829774.png)
 
-![image-20210131161004001](/Users/terry/typero-image/image-20210131161004001.png)
+![image-20210131161004001](./img/image-20210131161004001.png)
 
 
 
@@ -222,7 +222,7 @@ headers: {'X-Requested-with': 'XMLHttpRequest'},
 + 服务端判断客户端资源，是否和服务端资源一样
 + 一致返回304，否则返回200和最新的资源
 
-![image-20210131162110067](/Users/terry/typero-image/image-20210131162110067.png)
+![image-20210131162110067](./img/image-20210131162110067.png)
 
 #### 资源标识
 
@@ -234,23 +234,23 @@ headers: {'X-Requested-with': 'XMLHttpRequest'},
 
 #### Last-Modified
 
-![image-20210131162429441](/Users/terry/typero-image/image-20210131162429441.png)
+![image-20210131162429441](./img/image-20210131162429441.png)
 
 
 
 #### Etag
 
-![image-20210131162805634](/Users/terry/typero-image/image-20210131162805634.png)
+![image-20210131162805634](./img/image-20210131162805634.png)
 
 
 
 #### Headers 示例
 
-![image-20210131162927822](/Users/terry/typero-image/image-20210131162927822.png)
+![image-20210131162927822](./img/image-20210131162927822.png)
 
 ##### 请求示例
 
-![image-20210131163005897](/Users/terry/typero-image/image-20210131163005897.png)
+![image-20210131163005897](./img/image-20210131163005897.png)
 
 
 
@@ -264,7 +264,7 @@ headers: {'X-Requested-with': 'XMLHttpRequest'},
 
 #### 缓存流程
 
-![image-20210131163411129](/Users/terry/typero-image/image-20210131163411129.png)
+![image-20210131163411129](./img/image-20210131163411129.png)
 
 
 
