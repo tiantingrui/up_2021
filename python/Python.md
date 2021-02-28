@@ -522,5 +522,90 @@ form t.c1 import *
 
 
 
+## Python 函数
 
++ 序列解包与链式赋值
+
+```python
+d = 1, 2, 3
+print(type(d))
+# <class 'tuple'>
+#序列解包
+a, b, c = d
+print(a, b, c)
+```
+
++ 链式赋值
+
+```python
+# a, b, c = 1, 2, 3
+# 链式赋值
+a, b, c = 1
+```
+
++ 参数类型
+
+  + 必须参数
+  + 关键字参数
+
+  ```python
+  def add(x, y):
+      return x + y
+  
+  
+  # 关键字参数
+  c = add(y = 3, x = 2)
+  ```
+
+  + 默认参数
+
+  ```python
+  def add(x, y = 3):
+      return x + y
+  ```
+
+  + 可变参数
+
+  ```python
+  # 可变参数
+  def demo(*param):
+      print(param)
+      print(type(param))
+  
+  demo(1, 2, 3, 4)
+  # (1, 2, 3, 4)
+  # <class 'tuple'>
+  
+  a = (1, 2, 3, 4)
+  # * 有点像解包
+  demo(*a)
+  # (1, 2, 3, 4)
+  # <class 'tuple'>
+  ```
+
+  + 关键字可变参数
+
+  ```python
+  # 关键字可变参数
+  def city_temp(**param):
+      print(param)
+      print(type(param))
+  
+  
+  city_temp(bj = '32c', xm = '23c', sh = '23c')
+  # {'bj': '32c', 'xm': '23c', 'sh': '23c'}
+  # <class 'dict'>
+  
+  
+  def city_temp(**param):
+      # 遍历字典的方法
+      for key,val in param.items():
+          print(key, ':', val)
+  
+  a = {'bj': '32c', 'xm': '23c'}
+  
+  city_temp(**a)
+  ```
+
+  
 
