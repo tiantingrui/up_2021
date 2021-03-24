@@ -151,3 +151,84 @@ e266d4d6f6b508e955c30b21b3e68b3e5f290a22a22d0ecfa1db99a02c81536a
 $ docker logs -f ice-mysql
 ```
 
+
+
+
+
+## docker-compose
+
+
+
+#### 安装docker-compose
+
+```shell
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+```
+
+**修改权限**
+
+```shell
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+**查看docker-compose版本**
+
+```shell
+docker-compose --version
+```
+
+
+
+#### 编写 docker-compose.yml
+
+```yml
+# docker-compose.yml
+version: '3'
+services:
+  mysql1:
+    image: mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=123456
+    ports:
+    - 28002:3306
+
+  mysql2:
+    image: mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=123456
+    ports:
+    - 28003:3306
+```
+
+#### 运行 docker-compose
+
+```shell 
+$ docker-compose up -d
+Creating network "home_default" with the default driver
+Creating home_mysql1_1 ... done
+Creating home_mysql2_1 ... done
+
+$ docker ps
+```
+
+
+
+
+
+## dockerhub
+
+```shell
+# 登录 dockerHub
+$ docker login
+
+# 提交一个镜像
+$ docker commit xxxxx tiantingrui/mysql:1.0
+
+# 查看
+$ docker images
+
+# 推送远程 dockerHub
+docker push tiantingrui/mysql:1.0
+```
+
