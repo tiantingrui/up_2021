@@ -1,3 +1,7 @@
 {
-    "editor.fontSize": 16
+    "editor.fontSize": 16,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
 }
